@@ -19,6 +19,11 @@ mod commands;
 use crate::command_prelude::*;
 
 fn main() {
+    #[cfg(target_os = "scarlet")]
+    {
+        // Cargo's bundled C dependencies need the Scarlet C ABI provider.
+        std::hint::black_box(scarlet_c::__errno_location());
+    }
     let _guard = setup_logger();
 
     let mut gctx = match GlobalContext::default() {
