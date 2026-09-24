@@ -17,8 +17,8 @@ gix-transport = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports"
 git2 = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 libgit2-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 libsqlite3-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
-curl = { git = "https://github.com/petitstrawberry/curl-rust", rev = "39de3841c644dece048694b7144e3750731bc8c8" }
-curl-sys = { git = "https://github.com/petitstrawberry/curl-rust", rev = "39de3841c644dece048694b7144e3750731bc8c8" }
+curl = { git = "https://github.com/petitstrawberry/curl-rust", rev = "1955ed2354f4e51a9b251874a7eb0a41f74310bd" }
+curl-sys = { git = "https://github.com/petitstrawberry/curl-rust", rev = "1955ed2354f4e51a9b251874a7eb0a41f74310bd" }
 errno = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 filetime = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 getrandom_02 = { package = "getrandom", version = "=0.2.16+scarlet.1", git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }

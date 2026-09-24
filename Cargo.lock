@@ -875,7 +875,7 @@ checksum = "9b10589d1a5e400d61f9f38f12f884cfd080ff345de8f17efda36fe0e4a02aa8"
 [[package]]
 name = "curl"
 version = "0.4.49+scarlet.1"
-source = "git+https://github.com/petitstrawberry/curl-rust?rev=39de3841c644dece048694b7144e3750731bc8c8#39de3841c644dece048694b7144e3750731bc8c8"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=1955ed2354f4e51a9b251874a7eb0a41f74310bd#1955ed2354f4e51a9b251874a7eb0a41f74310bd"
 dependencies = [
  "curl-sys",
  "libc",
@@ -891,7 +891,7 @@ dependencies = [
 [[package]]
 name = "curl-sys"
 version = "0.4.83+curl-8.15.0"
-source = "git+https://github.com/petitstrawberry/curl-rust?rev=39de3841c644dece048694b7144e3750731bc8c8#39de3841c644dece048694b7144e3750731bc8c8"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=1955ed2354f4e51a9b251874a7eb0a41f74310bd#1955ed2354f4e51a9b251874a7eb0a41f74310bd"
 dependencies = [
  "cc",
  "libc",
