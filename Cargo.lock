@@ -3904,7 +3904,7 @@ dependencies = [
 [[package]]
 name = "ring"
 version = "0.17.14+scarlet.1"
-source = "git+https://github.com/petitstrawberry/ring?rev=9350953d409ffa2fd383378f8cd3c7be0ee4e819#9350953d409ffa2fd383378f8cd3c7be0ee4e819"
+source = "git+https://github.com/petitstrawberry/ring?rev=64bb71f49552aa48caab6183a43862f7b8c49a3a#64bb71f49552aa48caab6183a43862f7b8c49a3a"
 dependencies = [
  "cc",
  "cfg-if",
@@ -4095,12 +4095,12 @@ dependencies = [
 [[package]]
 name = "scarlet-abi"
 version = "1.0.0"
-source = "git+https://github.com/petitstrawberry/Scarlet?rev=d777bd0b48e4d69c0c592e4a2846e81379d69fe8#d777bd0b48e4d69c0c592e4a2846e81379d69fe8"
+source = "git+https://github.com/petitstrawberry/Scarlet?rev=3b1b3a32251f6d332765f885ea4fb24a57fd167a#3b1b3a32251f6d332765f885ea4fb24a57fd167a"
 
 [[package]]
 name = "scarlet-libc"
 version = "0.1.0"
-source = "git+https://github.com/petitstrawberry/Scarlet?rev=d777bd0b48e4d69c0c592e4a2846e81379d69fe8#d777bd0b48e4d69c0c592e4a2846e81379d69fe8"
+source = "git+https://github.com/petitstrawberry/Scarlet?rev=3b1b3a32251f6d332765f885ea4fb24a57fd167a#3b1b3a32251f6d332765f885ea4fb24a57fd167a"
 dependencies = [
  "scarlet-abi",
  "scarlet-sys",
@@ -4118,7 +4118,7 @@ dependencies = [
 [[package]]
 name = "scarlet-sys"
 version = "1.0.0"
-source = "git+https://github.com/petitstrawberry/Scarlet?rev=d777bd0b48e4d69c0c592e4a2846e81379d69fe8#d777bd0b48e4d69c0c592e4a2846e81379d69fe8"
+source = "git+https://github.com/petitstrawberry/Scarlet?rev=3b1b3a32251f6d332765f885ea4fb24a57fd167a#3b1b3a32251f6d332765f885ea4fb24a57fd167a"
 dependencies = [
  "scarlet-abi",
 ]

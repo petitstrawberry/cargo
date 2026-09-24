@@ -30,7 +30,7 @@ gix-sec = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev 
 home = { path = "crates/home" }
 is_executable = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
 libz-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-ring = { git = "https://github.com/petitstrawberry/ring", rev = "9350953d409ffa2fd383378f8cd3c7be0ee4e819" }
+ring = { git = "https://github.com/petitstrawberry/ring", rev = "64bb71f49552aa48caab6183a43862f7b8c49a3a" }
 rustls-platform-verifier = { git = "https://github.com/petitstrawberry/rustls-platform-verifier", rev = "25d3b116f29e57fbe897b6c78a75941c90bee2b0" }
 tar = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
 url = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
@@ -251,7 +251,7 @@ winnow.workspace = true
 
 [target.'cfg(target_os = "scarlet")'.dependencies]
 curl = { workspace = true, features = ["rustls"] }
-scarlet-libc = { git = "https://github.com/petitstrawberry/Scarlet", rev = "d777bd0b48e4d69c0c592e4a2846e81379d69fe8" }
+scarlet-libc = { git = "https://github.com/petitstrawberry/Scarlet", rev = "3b1b3a32251f6d332765f885ea4fb24a57fd167a" }
 scarlet-platform = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
 
 [target.'cfg(not(target_os = "scarlet"))'.dependencies]
