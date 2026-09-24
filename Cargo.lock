@@ -3903,8 +3903,8 @@ dependencies = [
 
 [[package]]
 name = "ring"
-version = "0.17.14"
-source = "git+https://github.com/petitstrawberry/ring?rev=eb7e4c269ca35a2f3b5a782c831072562d2fb219#eb7e4c269ca35a2f3b5a782c831072562d2fb219"
+version = "0.17.14+scarlet.1"
+source = "git+https://github.com/petitstrawberry/ring?rev=9350953d409ffa2fd383378f8cd3c7be0ee4e819#9350953d409ffa2fd383378f8cd3c7be0ee4e819"
 dependencies = [
  "cc",
  "cfg-if",
