@@ -75,6 +75,13 @@ fn home_dir_inner() -> Option<PathBuf> {
     std::env::home_dir()
 }
 
+// Scarlet does not expose a user database. HOME is the authoritative home
+// directory until an account service exists; no Unix getpwuid fallback applies.
+#[cfg(target_os = "scarlet")]
+fn home_dir_inner() -> Option<PathBuf> {
+    std::env::var_os("HOME").map(PathBuf::from)
+}
+
 /// Returns the storage directory used by Cargo, often known as
 /// `.cargo` or `CARGO_HOME`.
 ///

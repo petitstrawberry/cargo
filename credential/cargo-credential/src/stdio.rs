@@ -1,7 +1,11 @@
-use std::{fs::File, io::Error};
+use std::io::Error;
+
+#[cfg(not(target_os = "scarlet"))]
+use std::fs::File;
 
 /// Reset stdin and stdout to the attached console / tty for the duration of the closure.
 /// If no console is available, stdin and stdout will be redirected to null.
+#[cfg(not(target_os = "scarlet"))]
 pub fn stdin_stdout_to_console<F, T>(f: F) -> Result<T, Error>
 where
     F: FnOnce() -> T,
@@ -16,6 +20,21 @@ where
     Ok(f())
 }
 
+/// Scarlet has no supported way to replace process-wide standard handles yet.
+/// Reject interactive credential prompting instead of reading Cargo's protocol
+/// stream or sending a password into its JSON output.
+#[cfg(target_os = "scarlet")]
+pub fn stdin_stdout_to_console<F, T>(_f: F) -> Result<T, Error>
+where
+    F: FnOnce() -> T,
+{
+    Err(Error::new(
+        std::io::ErrorKind::Unsupported,
+        "interactive credential prompting is unavailable on Scarlet",
+    ))
+}
+
+#[cfg(not(target_os = "scarlet"))]
 enum Stdio {
     Stdin,
     Stdout,

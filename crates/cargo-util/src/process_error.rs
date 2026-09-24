@@ -138,6 +138,13 @@ pub fn exit_status_to_string(status: ExitStatus) -> String {
         }
     }
 
+    #[cfg(target_os = "scarlet")]
+    fn status_to_string(status: ExitStatus) -> String {
+        // Native Scarlet reports process exit codes but has no Unix signal
+        // status to decode. Keep the exact code rather than inventing one.
+        status.to_string()
+    }
+
     #[cfg(windows)]
     fn status_to_string(status: ExitStatus) -> String {
         use windows_sys::Win32::Foundation::*;

@@ -354,6 +354,19 @@ impl GlobalCacheTracker {
         // provide user feedback) rather than blocking inside sqlite
         // (which by default has a short timeout).
         let db_path = gctx.assert_package_cache_locked(CacheLockMode::DownloadExclusive, &db_path);
+        // Scarlet has whole-file Native locks but no POSIX byte-range locks.
+        // Cargo already holds DownloadExclusive for this database, so use
+        // SQLite's Unix VFS without a second, unavailable lock mechanism.
+        #[cfg(target_os = "scarlet")]
+        let mut conn = Connection::open_with_flags_and_vfs(
+            db_path,
+            rusqlite::OpenFlags::SQLITE_OPEN_READ_WRITE
+                | rusqlite::OpenFlags::SQLITE_OPEN_CREATE
+                | rusqlite::OpenFlags::SQLITE_OPEN_URI
+                | rusqlite::OpenFlags::SQLITE_OPEN_NO_MUTEX,
+            "unix-none",
+        )?;
+        #[cfg(not(target_os = "scarlet"))]
         let mut conn = Connection::open(db_path)?;
         conn.pragma_update(None, "foreign_keys", true)?;
         sqlite::migrate(&mut conn, &migrations())?;

@@ -659,6 +659,21 @@ impl<D: fmt::Display> fmt::Display for Hyperlink<D> {
     }
 }
 
+#[cfg(target_os = "scarlet")]
+mod imp {
+    use super::{Shell, TtyWidth};
+
+    pub fn stderr_width() -> TtyWidth {
+        // Native has no terminal-window query yet. Suppress width-sensitive
+        // progress rendering until the terminal capability is available.
+        TtyWidth::NoTty
+    }
+
+    pub fn err_erase_line(shell: &mut Shell) {
+        let _ = shell.output.stderr().write_all(b"\x1B[K");
+    }
+}
+
 #[cfg(unix)]
 mod imp {
     use super::{Shell, TtyWidth};

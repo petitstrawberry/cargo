@@ -126,10 +126,51 @@ impl Write for FileLock {
 impl Drop for FileLock {
     fn drop(&mut self) {
         if let Some(f) = self.f.take() {
-            if let Err(e) = f.unlock() {
+            if let Err(e) = unlock_file(&f) {
                 tracing::warn!("failed to release lock: {e:?}");
             }
         }
+    }
+}
+
+fn try_lock_file(file: &File, shared: bool) -> Result<(), TryLockError> {
+    #[cfg(target_os = "scarlet")]
+    {
+        scarlet_platform::try_file_lock(file, shared)
+    }
+    #[cfg(not(target_os = "scarlet"))]
+    {
+        if shared {
+            file.try_lock_shared()
+        } else {
+            file.try_lock()
+        }
+    }
+}
+
+fn lock_file(file: &File, shared: bool) -> io::Result<()> {
+    #[cfg(target_os = "scarlet")]
+    {
+        scarlet_platform::lock_file(file, shared)
+    }
+    #[cfg(not(target_os = "scarlet"))]
+    {
+        if shared {
+            file.lock_shared()
+        } else {
+            file.lock()
+        }
+    }
+}
+
+fn unlock_file(file: &File) -> io::Result<()> {
+    #[cfg(target_os = "scarlet")]
+    {
+        scarlet_platform::unlock_file(file)
+    }
+    #[cfg(not(target_os = "scarlet"))]
+    {
+        file.unlock()
     }
 }
 
@@ -239,7 +280,9 @@ impl Filesystem {
         let mut opts = OpenOptions::new();
         opts.read(true).write(true).create(true);
         let (path, f) = self.open(path.as_ref(), &opts, true)?;
-        acquire(gctx, msg, &path, &|| f.try_lock(), &|| f.lock())?;
+        acquire(gctx, msg, &path, &|| try_lock_file(&f, false), &|| {
+            lock_file(&f, false)
+        })?;
         Ok(FileLock { f: Some(f), path })
     }
 
@@ -254,7 +297,7 @@ impl Filesystem {
         let mut opts = OpenOptions::new();
         opts.read(true).write(true).create(true);
         let (path, f) = self.open(path.as_ref(), &opts, true)?;
-        if try_acquire(&path, &|| f.try_lock())? {
+        if try_acquire(&path, &|| try_lock_file(&f, false))? {
             Ok(Some(FileLock { f: Some(f), path }))
         } else {
             Ok(None)
@@ -280,8 +323,8 @@ impl Filesystem {
         P: AsRef<Path>,
     {
         let (path, f) = self.open(path.as_ref(), &OpenOptions::new().read(true), false)?;
-        acquire(gctx, msg, &path, &|| f.try_lock_shared(), &|| {
-            f.lock_shared()
+        acquire(gctx, msg, &path, &|| try_lock_file(&f, true), &|| {
+            lock_file(&f, true)
         })?;
         Ok(FileLock { f: Some(f), path })
     }
@@ -300,8 +343,8 @@ impl Filesystem {
         let mut opts = OpenOptions::new();
         opts.read(true).write(true).create(true);
         let (path, f) = self.open(path.as_ref(), &opts, true)?;
-        acquire(gctx, msg, &path, &|| f.try_lock_shared(), &|| {
-            f.lock_shared()
+        acquire(gctx, msg, &path, &|| try_lock_file(&f, true), &|| {
+            lock_file(&f, true)
         })?;
         Ok(FileLock { f: Some(f), path })
     }
@@ -317,7 +360,7 @@ impl Filesystem {
         let mut opts = OpenOptions::new();
         opts.read(true).write(true).create(true);
         let (path, f) = self.open(path.as_ref(), &opts, true)?;
-        if try_acquire(&path, &|| f.try_lock_shared())? {
+        if try_acquire(&path, &|| try_lock_file(&f, true))? {
             Ok(Some(FileLock { f: Some(f), path }))
         } else {
             Ok(None)
@@ -378,7 +421,12 @@ fn try_acquire(path: &Path, lock_try: &dyn Fn() -> Result<(), TryLockError>) -> 
         // In addition to ignoring NFS which is commonly not working we also
         // just ignore locking on filesystems that look like they don't
         // implement file locking.
-        Err(TryLockError::Error(e)) if error_unsupported(&e) => Ok(true),
+        // Scarlet's package cache can only safely share files when the
+        // Native FileLock syscall is available. An older std or unsupported
+        // filesystem must fail rather than silently drop the lock.
+        Err(TryLockError::Error(e)) if error_unsupported(&e) && !cfg!(target_os = "scarlet") => {
+            Ok(true)
+        }
 
         Err(TryLockError::Error(e)) => {
             let e = anyhow::Error::from(e);
@@ -459,6 +507,11 @@ fn error_unsupported(err: &std::io::Error) -> bool {
         Some(libc::ENOSYS) => true,
         _ => err.kind() == std::io::ErrorKind::Unsupported,
     }
+}
+
+#[cfg(target_os = "scarlet")]
+fn error_unsupported(err: &std::io::Error) -> bool {
+    err.kind() == std::io::ErrorKind::Unsupported
 }
 
 #[cfg(windows)]

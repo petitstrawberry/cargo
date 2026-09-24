@@ -1,4 +1,128 @@
+#[cfg(not(target_os = "scarlet"))]
 pub use self::imp::read2;
+#[cfg(target_os = "scarlet")]
+pub use self::scarlet_imp::read2;
+
+// Scarlet's Native process pipes are blocking and do not expose poll or
+// O_NONBLOCK. Drain both pipes concurrently so a child that fills one pipe
+// while writing the other cannot deadlock its parent.
+#[cfg(any(target_os = "scarlet", test))]
+mod scarlet_imp {
+    use std::io::{self, Read};
+    use std::process::{ChildStderr, ChildStdout};
+    use std::sync::mpsc;
+    use std::thread;
+
+    enum Chunk {
+        Bytes(bool, Vec<u8>),
+        End(bool),
+        Error(io::Error),
+    }
+
+    fn drain(mut pipe: impl Read, stdout: bool, sender: mpsc::SyncSender<Chunk>) {
+        let mut buffer = [0u8; 8192];
+        loop {
+            match pipe.read(&mut buffer) {
+                Ok(0) => {
+                    let _ = sender.send(Chunk::End(stdout));
+                    return;
+                }
+                Ok(count) => {
+                    if sender
+                        .send(Chunk::Bytes(stdout, buffer[..count].to_vec()))
+                        .is_err()
+                    {
+                        return;
+                    }
+                }
+                Err(error) if error.kind() == io::ErrorKind::Interrupted => continue,
+                Err(error) => {
+                    let _ = sender.send(Chunk::Error(error));
+                    return;
+                }
+            }
+        }
+    }
+
+    pub fn read2(
+        out_pipe: ChildStdout,
+        err_pipe: ChildStderr,
+        data: &mut dyn FnMut(bool, &mut Vec<u8>, bool),
+    ) -> io::Result<()> {
+        let (sender, receiver) = mpsc::sync_channel(8);
+        thread::scope(|scope| {
+            let out_sender = sender.clone();
+            let out_reader = scope.spawn(move || drain(out_pipe, true, out_sender));
+            let err_reader = scope.spawn(move || drain(err_pipe, false, sender));
+            let mut out = Vec::new();
+            let mut err = Vec::new();
+            let mut ended = 0;
+            let mut first_error = None;
+            while ended != 2 {
+                match receiver.recv() {
+                    Ok(Chunk::Bytes(true, bytes)) => {
+                        out.extend_from_slice(&bytes);
+                        data(true, &mut out, false);
+                    }
+                    Ok(Chunk::Bytes(false, bytes)) => {
+                        err.extend_from_slice(&bytes);
+                        data(false, &mut err, false);
+                    }
+                    Ok(Chunk::End(stdout)) => {
+                        ended += 1;
+                        if stdout {
+                            data(true, &mut out, true);
+                        } else {
+                            data(false, &mut err, true);
+                        }
+                    }
+                    Ok(Chunk::Error(error)) => {
+                        ended += 1;
+                        first_error.get_or_insert(error);
+                    }
+                    Err(_) => return Err(io::ErrorKind::BrokenPipe.into()),
+                }
+            }
+            out_reader.join().expect("stdout pipe reader panicked");
+            err_reader.join().expect("stderr pipe reader panicked");
+            first_error.map_or(Ok(()), Err)
+        })
+    }
+
+    #[cfg(all(test, unix))]
+    #[test]
+    fn drains_both_blocking_pipes_with_streaming_callbacks() {
+        use std::process::{Command, Stdio};
+        let mut child = Command::new("sh")
+            .args(["-c", "i=0; while [ $i -lt 4096 ]; do printf 'out0123456789'; printf 'err0123456789' >&2; i=$((i+1)); done"])
+            .stdout(Stdio::piped())
+            .stderr(Stdio::piped())
+            .spawn()
+            .unwrap();
+        let mut stdout = Vec::new();
+        let mut stderr = Vec::new();
+        let mut done = [false; 2];
+        read2(
+            child.stdout.take().unwrap(),
+            child.stderr.take().unwrap(),
+            &mut |out, buffer, end| {
+                if out {
+                    stdout.extend_from_slice(buffer);
+                    done[0] = end;
+                } else {
+                    stderr.extend_from_slice(buffer);
+                    done[1] = end;
+                }
+                buffer.clear();
+            },
+        )
+        .unwrap();
+        assert!(child.wait().unwrap().success());
+        assert_eq!(stdout.len(), 4096 * b"out0123456789".len());
+        assert_eq!(stderr.len(), 4096 * b"err0123456789".len());
+        assert_eq!(done, [true, true]);
+    }
+}
 
 #[cfg(unix)]
 mod imp {

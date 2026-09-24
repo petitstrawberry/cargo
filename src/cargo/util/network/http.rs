@@ -66,8 +66,14 @@ pub fn configure_http_handle(gctx: &GlobalContext, handle: &mut Easy) -> CargoRe
         let proxy_cainfo = proxy_cainfo.resolve_path(gctx);
         handle.proxy_cainfo(&format!("{}", proxy_cainfo.display()))?;
     }
+    let mut ssl_options = SslOpt::new();
+    let mut set_ssl_options = false;
     if let Some(check) = http.check_revoke {
-        handle.ssl_options(SslOpt::new().no_revoke(!check))?;
+        ssl_options.no_revoke(!check);
+        set_ssl_options = true;
+    }
+    if set_ssl_options {
+        handle.ssl_options(&ssl_options)?;
     }
 
     if let Some(user_agent) = &http.user_agent {

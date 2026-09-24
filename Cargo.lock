@@ -344,7 +344,7 @@ dependencies = [
  "glob",
  "hex",
  "hmac",
- "home 0.5.12 (registry+https://github.com/rust-lang/crates.io-index)",
+ "home",
  "http-auth",
  "ignore",
  "im-rc",
@@ -368,6 +368,7 @@ dependencies = [
  "rustc-stable-hash",
  "rustfix",
  "same-file",
+ "scarlet-platform",
  "semver",
  "serde",
  "serde-untagged",
@@ -565,6 +566,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "cesu8"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d43a04d8753f35258c91f8ec639f792891f748a1edbd759cf1dcea3382ad83c"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -675,6 +682,16 @@ name = "colorchoice"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b05b61dc5112cbb17e4b6cd61790d9845d13888356391624cbe7e41efeac1e75"
+
+[[package]]
+name = "combine"
+version = "4.6.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cfc320937d09e6de266b31b9afb480f197d7a861be86be7cb2ea7e5d1bfffc5e"
+dependencies = [
+ "bytes",
+ "memchr",
+]
 
 [[package]]
 name = "const-oid"
@@ -857,13 +874,14 @@ checksum = "9b10589d1a5e400d61f9f38f12f884cfd080ff345de8f17efda36fe0e4a02aa8"
 [[package]]
 name = "curl"
 version = "0.4.49"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79fc3b6dd0b87ba36e565715bf9a2ced221311db47bd18011676f24a6066edbc"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=8bec16c29cb3b706e7711ec9ead45d58321d172e#8bec16c29cb3b706e7711ec9ead45d58321d172e"
 dependencies = [
  "curl-sys",
  "libc",
- "openssl-probe",
+ "openssl-probe 0.1.6",
  "openssl-sys",
+ "scarlet-abi",
+ "scarlet-sys",
  "schannel",
  "socket2",
  "windows-sys 0.59.0",
@@ -872,8 +890,7 @@ dependencies = [
 [[package]]
 name = "curl-sys"
 version = "0.4.83+curl-8.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5830daf304027db10c82632a464879d46a3f7c4ba17a31592657ad16c719b483"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=8bec16c29cb3b706e7711ec9ead45d58321d172e#8bec16c29cb3b706e7711ec9ead45d58321d172e"
 dependencies = [
  "cc",
  "libc",
@@ -881,6 +898,7 @@ dependencies = [
  "libz-sys",
  "openssl-sys",
  "pkg-config",
+ "rustls-ffi",
  "vcpkg",
  "windows-sys 0.59.0",
 ]
@@ -1110,11 +1128,10 @@ dependencies = [
 [[package]]
 name = "errno"
 version = "0.3.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -1175,8 +1192,7 @@ checksum = "64cd1e32ddd350061ae6edb1b082d7c54915b5c672c389143b9a63403a109f24"
 [[package]]
 name = "filetime"
 version = "0.2.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc0505cd1b6fa6580283f6bdf70a73fcf4aba1184038c90902b92b3dd0df63ed"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cfg-if",
  "libc",
@@ -1307,24 +1323,24 @@ dependencies = [
 [[package]]
 name = "getrandom"
 version = "0.2.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "335ff9f135e4384c8150d6f27c6daed433577f86b4750418338c01a1a2528592"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cfg-if",
  "libc",
+ "scarlet-sys",
  "wasi",
 ]
 
 [[package]]
 name = "getrandom"
 version = "0.3.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cfg-if",
  "js-sys",
  "libc",
  "r-efi",
+ "scarlet-sys",
  "wasip2",
  "wasm-bindgen",
 ]
@@ -1332,14 +1348,13 @@ dependencies = [
 [[package]]
 name = "git2"
 version = "0.20.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2deb07a133b1520dc1a5690e9bd08950108873d7ed5de38dcc74d3b5ebffa110"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "bitflags",
  "libc",
  "libgit2-sys",
  "log",
- "openssl-probe",
+ "openssl-probe 0.1.6",
  "openssl-sys",
  "url",
 ]
@@ -1347,8 +1362,7 @@ dependencies = [
 [[package]]
 name = "git2-curl"
 version = "0.21.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be8dcabbc09ece4d30a9aa983d5804203b7e2f8054a171f792deff59b56d31fa"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "curl",
  "git2",
@@ -1508,8 +1522,7 @@ dependencies = [
 [[package]]
 name = "gix-config-value"
 version = "0.15.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2c489abb061c74b0c3ad790e24a606ef968cebab48ec673d6a891ece7d5aef64"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "bitflags",
  "bstr",
@@ -1654,14 +1667,14 @@ dependencies = [
 [[package]]
 name = "gix-fs"
 version = "0.17.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f1ecd896258cdc5ccd94d18386d17906b8de265ad2ecf68e3bea6b007f6a28f"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "bstr",
  "fastrand",
  "gix-features",
  "gix-path",
  "gix-utils",
+ "scarlet-platform",
  "thiserror 2.0.17",
 ]
 
@@ -1716,8 +1729,7 @@ dependencies = [
 [[package]]
 name = "gix-index"
 version = "0.42.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "31244542fb98ea4f3e964a4f8deafc2f4c77ad42bed58a1e8424bca1965fae99"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "bitflags",
  "bstr",
@@ -2002,8 +2014,7 @@ dependencies = [
 [[package]]
 name = "gix-sec"
 version = "0.12.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ea9962ed6d9114f7f100efe038752f41283c225bb507a2888903ac593dffa6be"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "bitflags",
  "gix-path",
@@ -2083,8 +2094,7 @@ checksum = "1d3f59a8de2934f6391b6b3a1a7654eae18961fcb9f9c843533fed34ad0f3457"
 [[package]]
 name = "gix-transport"
 version = "0.49.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8da4a77922accb1e26e610c7a84ef7e6b34fd07112e6a84afd68d7f3e795957"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "base64",
  "bstr",
@@ -2328,15 +2338,6 @@ dependencies = [
 [[package]]
 name = "home"
 version = "0.5.12"
-dependencies = [
- "windows-sys 0.61.2",
-]
-
-[[package]]
-name = "home"
-version = "0.5.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc627f471c528ff0c4a49e1d5e60450c8f6461dd6d10ba9dcd3a61d3dff7728d"
 dependencies = [
  "windows-sys 0.61.2",
 ]
@@ -2638,9 +2639,9 @@ dependencies = [
 [[package]]
 name = "is_executable"
 version = "1.0.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "baabb8b4867b26294d818bf3f651a454b6901431711abb96e296245888d6e8c4"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
+ "scarlet-platform",
  "windows-sys 0.60.2",
 ]
 
@@ -2722,6 +2723,50 @@ dependencies = [
 ]
 
 [[package]]
+name = "jni"
+version = "0.21.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1a87aa2bb7d2af34197c04845522473242e1aa17c12f4935d5856491a7fb8c97"
+dependencies = [
+ "cesu8",
+ "cfg-if",
+ "combine",
+ "jni-sys 0.3.1",
+ "log",
+ "thiserror 1.0.69",
+ "walkdir",
+ "windows-sys 0.45.0",
+]
+
+[[package]]
+name = "jni-sys"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "41a652e1f9b6e0275df1f15b32661cf0d4b78d4d87ddec5e0c3c20f097433258"
+dependencies = [
+ "jni-sys 0.4.1",
+]
+
+[[package]]
+name = "jni-sys"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c6377a88cb3910bee9b0fa88d4f42e1d2da8e79915598f65fb0c7ee14c878af2"
+dependencies = [
+ "jni-sys-macros",
+]
+
+[[package]]
+name = "jni-sys-macros"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "38c0b942f458fe50cdac086d2f946512305e5631e720728f2a61aabcd47a6264"
+dependencies = [
+ "quote",
+ "syn 2.0.111",
+]
+
+[[package]]
 name = "jobserver"
 version = "0.1.34"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2765,14 +2810,12 @@ checksum = "884e2677b40cc8c339eaefcb701c32ef1fd2493d71118dc0ca4b6a736c93bd67"
 [[package]]
 name = "libc"
 version = "0.2.177"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2874a2af47a2325c2001a6e6fad9b16a53b802102b528163885171cf92b15976"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 
 [[package]]
 name = "libgit2-sys"
 version = "0.18.2+1.9.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1c42fe03df2bd3c53a3a9c7317ad91d80c81cd1fb0caec8d7cc4cd2bfa10c222"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cc",
  "libc",
@@ -2816,8 +2859,7 @@ dependencies = [
 [[package]]
 name = "libsqlite3-sys"
 version = "0.35.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "133c182a6a2c87864fe97778797e46c7e999672690dc9fa3ee8e241aa4a9c13f"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cc",
  "pkg-config",
@@ -2850,8 +2892,7 @@ dependencies = [
 [[package]]
 name = "libz-sys"
 version = "1.1.23"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "15d118bbf3771060e7311cc7bb0545b01d08a8b4a7de949198dec1fa0ca1c0f7"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "cc",
  "libc",
@@ -3280,6 +3321,12 @@ name = "openssl-probe"
 version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d05e27ee213611ffe7d6348b942e8f942b37114c00cc03cec254295a4a17852e"
+
+[[package]]
+name = "openssl-probe"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c87def4c32ab89d880effc9e097653c8da5d6ef28e6b539d313baaacfbafcbe"
 
 [[package]]
 name = "openssl-src"
@@ -3856,8 +3903,7 @@ dependencies = [
 [[package]]
 name = "ring"
 version = "0.17.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4689e6c2294d81e88dc6261c768b63bc4fcdb852be6d1352498b114f61383b7"
+source = "git+https://github.com/petitstrawberry/ring?rev=eb7e4c269ca35a2f3b5a782c831072562d2fb219#eb7e4c269ca35a2f3b5a782c831072562d2fb219"
 dependencies = [
  "cc",
  "cfg-if",
@@ -3935,10 +3981,36 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "533f54bc6a7d4f647e46ad909549eda97bf5afc1585190ef692b4286b198bd8f"
 dependencies = [
  "once_cell",
+ "ring",
  "rustls-pki-types",
  "rustls-webpki",
  "subtle",
  "zeroize",
+]
+
+[[package]]
+name = "rustls-ffi"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4128514cb6472050cba340cdac098a235c53e6aad276737ce1d7b24a19260392"
+dependencies = [
+ "libc",
+ "log",
+ "rustls",
+ "rustls-platform-verifier",
+ "rustls-webpki",
+]
+
+[[package]]
+name = "rustls-native-certs"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dab5152771c58876a2146916e53e35057e1a4dfa2b9df0f0305b07f611fdea4d"
+dependencies = [
+ "openssl-probe 0.2.1",
+ "rustls-pki-types",
+ "schannel",
+ "security-framework",
 ]
 
 [[package]]
@@ -3949,6 +4021,31 @@ checksum = "708c0f9d5f54ba0272468c1d306a52c495b31fa155e91bc25371e6df7996908c"
 dependencies = [
  "zeroize",
 ]
+
+[[package]]
+name = "rustls-platform-verifier"
+version = "0.5.3"
+source = "git+https://github.com/petitstrawberry/rustls-platform-verifier?rev=25d3b116f29e57fbe897b6c78a75941c90bee2b0#25d3b116f29e57fbe897b6c78a75941c90bee2b0"
+dependencies = [
+ "core-foundation 0.10.1",
+ "core-foundation-sys",
+ "jni",
+ "log",
+ "once_cell",
+ "rustls",
+ "rustls-native-certs",
+ "rustls-platform-verifier-android",
+ "rustls-webpki",
+ "security-framework",
+ "security-framework-sys",
+ "webpki-root-certs 0.26.11",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "rustls-platform-verifier-android"
+version = "0.1.1"
+source = "git+https://github.com/petitstrawberry/rustls-platform-verifier?rev=25d3b116f29e57fbe897b6c78a75941c90bee2b0#25d3b116f29e57fbe897b6c78a75941c90bee2b0"
 
 [[package]]
 name = "rustls-webpki"
@@ -3992,6 +4089,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
 dependencies = [
  "winapi-util",
+]
+
+[[package]]
+name = "scarlet-abi"
+version = "1.0.0"
+source = "git+https://github.com/petitstrawberry/Scarlet?rev=6e5c88a2b7ef4bfc019e237a8fdad93bab09c785#6e5c88a2b7ef4bfc019e237a8fdad93bab09c785"
+
+[[package]]
+name = "scarlet-platform"
+version = "0.1.0"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
+dependencies = [
+ "scarlet-abi",
+ "scarlet-sys",
+]
+
+[[package]]
+name = "scarlet-sys"
+version = "1.0.0"
+source = "git+https://github.com/petitstrawberry/Scarlet?rev=6e5c88a2b7ef4bfc019e237a8fdad93bab09c785#6e5c88a2b7ef4bfc019e237a8fdad93bab09c785"
+dependencies = [
+ "scarlet-abi",
 ]
 
 [[package]]
@@ -4466,11 +4585,11 @@ dependencies = [
 [[package]]
 name = "tar"
 version = "0.4.44"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1d863878d212c87a19c1a610eb53bb01fe12951c0501cf5a0d65f724914a667a"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "filetime",
  "libc",
+ "scarlet-platform",
 ]
 
 [[package]]
@@ -4897,8 +5016,7 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 [[package]]
 name = "url"
 version = "2.5.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "08bc136a29a3d1758e07a9cca267be308aeebf5cfd5a10f3f67ab2097683ef5b"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=65f3967d3ee56999b13251be6bcff45526619640#65f3967d3ee56999b13251be6bcff45526619640"
 dependencies = [
  "form_urlencoded",
  "idna",
@@ -5141,6 +5259,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "webpki-root-certs"
+version = "0.26.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "75c7f0ef91146ebfb530314f5f1d24528d7f0767efbfd31dce919275413e393e"
+dependencies = [
+ "webpki-root-certs 1.0.9",
+]
+
+[[package]]
+name = "webpki-root-certs"
+version = "1.0.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b96554aa2acc8ccdb7e1c9a58a7a68dd5d13bccc69cd124cb09406db612a1c9b"
+dependencies = [
+ "rustls-pki-types",
+]
+
+[[package]]
 name = "winapi-util"
 version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5186,6 +5322,15 @@ dependencies = [
 
 [[package]]
 name = "windows-sys"
+version = "0.45.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "75283be5efb2831d37ea142365f009c02ec203cd29a3ebecbc093d52315b66d0"
+dependencies = [
+ "windows-targets 0.42.2",
+]
+
+[[package]]
+name = "windows-sys"
 version = "0.52.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "282be5f36a8ce781fad8c8ae18fa3f9beff57ec1b52cb3de0789201425d9a33d"
@@ -5218,6 +5363,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc"
 dependencies = [
  "windows-link",
+]
+
+[[package]]
+name = "windows-targets"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8e5180c00cd44c9b1c88adb3693291f1cd93605ded80c250a75d472756b4d071"
+dependencies = [
+ "windows_aarch64_gnullvm 0.42.2",
+ "windows_aarch64_msvc 0.42.2",
+ "windows_i686_gnu 0.42.2",
+ "windows_i686_msvc 0.42.2",
+ "windows_x86_64_gnu 0.42.2",
+ "windows_x86_64_gnullvm 0.42.2",
+ "windows_x86_64_msvc 0.42.2",
 ]
 
 [[package]]
@@ -5255,6 +5415,12 @@ dependencies = [
 
 [[package]]
 name = "windows_aarch64_gnullvm"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "597a5118570b68bc08d8d59125332c54f1ba9d9adeedeef5b99b02ba2b0698f8"
+
+[[package]]
+name = "windows_aarch64_gnullvm"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32a4622180e7a0ec044bb555404c800bc9fd9ec262ec147edd5989ccd0c02cd3"
@@ -5267,6 +5433,12 @@ checksum = "a9d8416fa8b42f5c947f8482c43e7d89e73a173cead56d044f6a56104a6d1b53"
 
 [[package]]
 name = "windows_aarch64_msvc"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e08e8864a60f06ef0d0ff4ba04124db8b0fb3be5776a5cd47641e942e58c4d43"
+
+[[package]]
+name = "windows_aarch64_msvc"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09ec2a7bb152e2252b53fa7803150007879548bc709c039df7627cabbd05d469"
@@ -5276,6 +5448,12 @@ name = "windows_aarch64_msvc"
 version = "0.53.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b9d782e804c2f632e395708e99a94275910eb9100b2114651e04744e9b125006"
+
+[[package]]
+name = "windows_i686_gnu"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c61d927d8da41da96a81f029489353e68739737d3beca43145c8afec9a31a84f"
 
 [[package]]
 name = "windows_i686_gnu"
@@ -5303,6 +5481,12 @@ checksum = "fa7359d10048f68ab8b09fa71c3daccfb0e9b559aed648a8f95469c27057180c"
 
 [[package]]
 name = "windows_i686_msvc"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "44d840b6ec649f480a41c8d80f9c65108b92d89345dd94027bfe06ac444d1060"
+
+[[package]]
+name = "windows_i686_msvc"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "240948bc05c5e7c6dabba28bf89d89ffce3e303022809e73deaefe4f6ec56c66"
@@ -5312,6 +5496,12 @@ name = "windows_i686_msvc"
 version = "0.53.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e7ac75179f18232fe9c285163565a57ef8d3c89254a30685b57d83a38d326c2"
+
+[[package]]
+name = "windows_x86_64_gnu"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8de912b8b8feb55c064867cf047dda097f92d51efad5b491dfb98f6bbb70cb36"
 
 [[package]]
 name = "windows_x86_64_gnu"
@@ -5327,6 +5517,12 @@ checksum = "9c3842cdd74a865a8066ab39c8a7a473c0778a3f29370b5fd6b4b9aa7df4a499"
 
 [[package]]
 name = "windows_x86_64_gnullvm"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "26d41b46a36d453748aedef1486d5c7a85db22e56aff34643984ea85514e94a3"
+
+[[package]]
+name = "windows_x86_64_gnullvm"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "24d5b23dc417412679681396f2b49f3de8c1473deb516bd34410872eff51ed0d"
@@ -5336,6 +5532,12 @@ name = "windows_x86_64_gnullvm"
 version = "0.53.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ffa179e2d07eee8ad8f57493436566c7cc30ac536a3379fdf008f47f6bb7ae1"
+
+[[package]]
+name = "windows_x86_64_msvc"
+version = "0.42.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9aec5da331524158c6d1a4ac0ab1541149c0b9505fde06423b02f5ef0106b9f0"
 
 [[package]]
 name = "windows_x86_64_msvc"

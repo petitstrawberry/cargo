@@ -21,6 +21,16 @@ pub fn setup() -> Option<Setup> {
     unsafe { imp::setup() }
 }
 
+// Scarlet does not yet have Unix process groups or Windows job objects.
+#[cfg(target_os = "scarlet")]
+mod imp {
+    pub type Setup = ();
+
+    pub unsafe fn setup() -> Option<Setup> {
+        None
+    }
+}
+
 #[cfg(unix)]
 mod imp {
     use std::env;

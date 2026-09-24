@@ -351,6 +351,10 @@ fn is_executable<P: AsRef<Path>>(path: P) -> bool {
         .map(|metadata| metadata.is_file() && metadata.permissions().mode() & 0o111 != 0)
         .unwrap_or(false)
 }
+#[cfg(target_os = "scarlet")]
+fn is_executable<P: AsRef<Path>>(path: P) -> bool {
+    scarlet_platform::is_executable(path.as_ref())
+}
 #[cfg(windows)]
 fn is_executable<P: AsRef<Path>>(path: P) -> bool {
     path.as_ref().is_file()

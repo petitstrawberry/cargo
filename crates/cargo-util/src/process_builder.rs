@@ -515,6 +515,9 @@ impl ProcessBuilder {
                 }
             }
         }
+        // Scarlet's jobserver currently has an in-process semaphore only.
+        // Passing it to a child panics and would advertise unusable tokens.
+        #[cfg(not(target_os = "scarlet"))]
         if let Some(ref c) = self.jobserver {
             c.configure(&mut command);
         }
@@ -620,6 +623,23 @@ mod imp {
     }
 }
 
+#[cfg(target_os = "scarlet")]
+mod imp {
+    use super::ProcessBuilder;
+    use anyhow::Result;
+    use std::io;
+
+    // Native Scarlet currently exposes spawn/wait, but no process image
+    // replacement. Use the same fallback as the Windows implementation.
+    pub fn exec_replace(process_builder: &ProcessBuilder) -> Result<()> {
+        process_builder.exec()
+    }
+
+    pub fn command_line_too_big(error: &io::Error) -> bool {
+        error.raw_os_error() == Some(7)
+    }
+}
+
 #[cfg(windows)]
 mod imp {
     use super::{ProcessBuilder, ProcessError};
@@ -683,6 +703,7 @@ mod tests {
         );
     }
 
+    #[cfg(any(unix, windows))]
     #[test]
     fn argfile_build_fails_if_arg_contains_invalid_utf8() {
         let mut cmd = ProcessBuilder::new("echo");
