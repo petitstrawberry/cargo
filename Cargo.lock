@@ -874,8 +874,8 @@ checksum = "9b10589d1a5e400d61f9f38f12f884cfd080ff345de8f17efda36fe0e4a02aa8"
 
 [[package]]
 name = "curl"
-version = "0.4.49"
-source = "git+https://github.com/petitstrawberry/curl-rust?rev=b5e21cb8042de8458aaf6870d1392c7a41170c8a#b5e21cb8042de8458aaf6870d1392c7a41170c8a"
+version = "0.4.49+scarlet.1"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=39de3841c644dece048694b7144e3750731bc8c8#39de3841c644dece048694b7144e3750731bc8c8"
 dependencies = [
  "curl-sys",
  "libc",
@@ -891,7 +891,7 @@ dependencies = [
 [[package]]
 name = "curl-sys"
 version = "0.4.83+curl-8.15.0"
-source = "git+https://github.com/petitstrawberry/curl-rust?rev=b5e21cb8042de8458aaf6870d1392c7a41170c8a#b5e21cb8042de8458aaf6870d1392c7a41170c8a"
+source = "git+https://github.com/petitstrawberry/curl-rust?rev=39de3841c644dece048694b7144e3750731bc8c8#39de3841c644dece048694b7144e3750731bc8c8"
 dependencies = [
  "cc",
  "libc",
@@ -1070,7 +1070,7 @@ version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "33ce99a9e19c84beb4cc35ece85374335ccc398240712114c85038319ed709bd"
 dependencies = [
- "getrandom 0.3.4",
+ "getrandom 0.3.4+scarlet.1",
 ]
 
 [[package]]
@@ -1128,8 +1128,8 @@ dependencies = [
 
 [[package]]
 name = "errno"
-version = "0.3.14"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.3.14+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "libc",
  "windows-sys 0.52.0",
@@ -1192,8 +1192,8 @@ checksum = "64cd1e32ddd350061ae6edb1b082d7c54915b5c672c389143b9a63403a109f24"
 
 [[package]]
 name = "filetime"
-version = "0.2.26"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.2.26+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cfg-if",
  "libc",
@@ -1323,8 +1323,8 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.2.16"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.2.16+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cfg-if",
  "libc",
@@ -1334,8 +1334,8 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.3.4"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.3.4+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cfg-if",
  "js-sys",
@@ -1348,8 +1348,8 @@ dependencies = [
 
 [[package]]
 name = "git2"
-version = "0.20.2"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.20.2+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "bitflags",
  "libc",
@@ -1363,7 +1363,7 @@ dependencies = [
 [[package]]
 name = "git2-curl"
 version = "0.21.0"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "curl",
  "git2",
@@ -1523,7 +1523,7 @@ dependencies = [
 [[package]]
 name = "gix-config-value"
 version = "0.15.3"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "bitflags",
  "bstr",
@@ -1668,7 +1668,7 @@ dependencies = [
 [[package]]
 name = "gix-fs"
 version = "0.17.0"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "bstr",
  "fastrand",
@@ -1730,7 +1730,7 @@ dependencies = [
 [[package]]
 name = "gix-index"
 version = "0.42.1"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "bitflags",
  "bstr",
@@ -2015,7 +2015,7 @@ dependencies = [
 [[package]]
 name = "gix-sec"
 version = "0.12.2"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "bitflags",
  "gix-path",
@@ -2095,7 +2095,7 @@ checksum = "1d3f59a8de2934f6391b6b3a1a7654eae18961fcb9f9c843533fed34ad0f3457"
 [[package]]
 name = "gix-transport"
 version = "0.49.1"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "base64",
  "bstr",
@@ -2640,7 +2640,7 @@ dependencies = [
 [[package]]
 name = "is_executable"
 version = "1.0.5"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "scarlet-platform",
  "windows-sys 0.60.2",
@@ -2773,7 +2773,7 @@ version = "0.1.34"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9afb3de4395d6b3e67a780b6de64b51c978ecf11cb9a462c66be7d4ca9039d33"
 dependencies = [
- "getrandom 0.3.4",
+ "getrandom 0.3.4+scarlet.1",
  "libc",
 ]
 
@@ -2810,13 +2810,13 @@ checksum = "884e2677b40cc8c339eaefcb701c32ef1fd2493d71118dc0ca4b6a736c93bd67"
 
 [[package]]
 name = "libc"
-version = "0.2.177"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.2.177+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 
 [[package]]
 name = "libgit2-sys"
-version = "0.18.2+1.9.1"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.18.2+1.9.1.scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cc",
  "libc",
@@ -2860,7 +2860,7 @@ dependencies = [
 [[package]]
 name = "libsqlite3-sys"
 version = "0.35.0"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cc",
  "pkg-config",
@@ -2892,8 +2892,8 @@ dependencies = [
 
 [[package]]
 name = "libz-sys"
-version = "1.1.23"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "1.1.23+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "cc",
  "libc",
@@ -3449,7 +3449,7 @@ checksum = "03e1ed71dcdf863d9f66d9de86de714db38aedc2fcabc1a60207d1fde603e2d5"
 dependencies = [
  "ct-codecs",
  "ed25519-compact",
- "getrandom 0.3.4",
+ "getrandom 0.3.4+scarlet.1",
  "orion",
  "p384",
  "rand_core 0.6.4",
@@ -3733,7 +3733,7 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
- "getrandom 0.2.16",
+ "getrandom 0.2.16+scarlet.1",
 ]
 
 [[package]]
@@ -3742,7 +3742,7 @@ version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "99d9a13982dcf210057a8a78572b2217b667c3beacbf3a0d8b454f6f82837d38"
 dependencies = [
- "getrandom 0.3.4",
+ "getrandom 0.3.4+scarlet.1",
 ]
 
 [[package]]
@@ -3908,7 +3908,7 @@ source = "git+https://github.com/petitstrawberry/ring?rev=eb7e4c269ca35a2f3b5a78
 dependencies = [
  "cc",
  "cfg-if",
- "getrandom 0.2.16",
+ "getrandom 0.2.16+scarlet.1",
  "libc",
  "untrusted",
  "windows-sys 0.52.0",
@@ -4109,7 +4109,7 @@ dependencies = [
 [[package]]
 name = "scarlet-platform"
 version = "0.1.0"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "scarlet-abi",
  "scarlet-sys",
@@ -4594,8 +4594,8 @@ dependencies = [
 
 [[package]]
 name = "tar"
-version = "0.4.44"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "0.4.44+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "filetime",
  "libc",
@@ -4609,7 +4609,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2d31c77bdf42a745371d260a26ca7163f1e0924b64afa0b688e61b5a9fa02f16"
 dependencies = [
  "fastrand",
- "getrandom 0.3.4",
+ "getrandom 0.3.4+scarlet.1",
  "once_cell",
  "rustix",
  "windows-sys 0.61.2",
@@ -5025,8 +5025,8 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 
 [[package]]
 name = "url"
-version = "2.5.7"
-source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=414c52f3540439857ce0c3f153dfeda6db926f23#414c52f3540439857ce0c3f153dfeda6db926f23"
+version = "2.5.7+scarlet.1"
+source = "git+https://github.com/petitstrawberry/scarlet-cargo-ports?rev=a01616b47f34cdba174ccef1957440b6a721bb3d#a01616b47f34cdba174ccef1957440b6a721bb3d"
 dependencies = [
  "form_urlencoded",
  "idna",
