@@ -11,29 +11,29 @@ exclude = [
 ]
 
 [patch.crates-io]
-libc = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-git2-curl = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-gix-transport = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-git2 = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-libgit2-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-libsqlite3-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
+libc = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+git2-curl = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+gix-transport = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+git2 = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+libgit2-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+libsqlite3-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 curl = { git = "https://github.com/petitstrawberry/curl-rust", rev = "39de3841c644dece048694b7144e3750731bc8c8" }
 curl-sys = { git = "https://github.com/petitstrawberry/curl-rust", rev = "39de3841c644dece048694b7144e3750731bc8c8" }
-errno = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-filetime = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-getrandom_02 = { package = "getrandom", version = "=0.2.16+scarlet.1", git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-getrandom_03 = { package = "getrandom", version = "=0.3.4+scarlet.1", git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-gix-config-value = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-gix-fs = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-gix-index = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-gix-sec = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
+errno = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+filetime = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+getrandom_02 = { package = "getrandom", version = "=0.2.16+scarlet.1", git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+getrandom_03 = { package = "getrandom", version = "=0.3.4+scarlet.1", git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+gix-config-value = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+gix-fs = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+gix-index = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+gix-sec = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 home = { path = "crates/home" }
-is_executable = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-libz-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
+is_executable = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+libz-sys = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 ring = { git = "https://github.com/petitstrawberry/ring", rev = "64bb71f49552aa48caab6183a43862f7b8c49a3a" }
 rustls-platform-verifier = { git = "https://github.com/petitstrawberry/rustls-platform-verifier", rev = "25d3b116f29e57fbe897b6c78a75941c90bee2b0" }
-tar = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
-url = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
+tar = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
+url = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 
 [workspace.package]
 rust-version = "1.89"  # MSRV:3
@@ -252,7 +252,7 @@ winnow.workspace = true
 [target.'cfg(target_os = "scarlet")'.dependencies]
 curl = { workspace = true, features = ["rustls"] }
 scarlet-libc = { git = "https://github.com/petitstrawberry/Scarlet", rev = "3b1b3a32251f6d332765f885ea4fb24a57fd167a" }
-scarlet-platform = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "a01616b47f34cdba174ccef1957440b6a721bb3d" }
+scarlet-platform = { git = "https://github.com/petitstrawberry/scarlet-cargo-ports", rev = "ff3bd49265c45747fea089065c26f66f338fccaa" }
 
 [target.'cfg(not(target_os = "scarlet"))'.dependencies]
 curl = { workspace = true, features = ["http2", "ssl"] }
