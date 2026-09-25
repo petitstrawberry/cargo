@@ -4604,8 +4604,8 @@ dependencies = [
 
 [[package]]
 name = "tempfile"
-version = "3.23.0"
-source = "git+https://github.com/petitstrawberry/tempfile.git?rev=601a6cb8784d11e12ee90c5a561c5d2bda58da63#601a6cb8784d11e12ee90c5a561c5d2bda58da63"
+version = "3.23.0+scarlet.1"
+source = "git+https://github.com/petitstrawberry/tempfile.git?rev=6a29584ff407448fb362ea08cd9e0106f85077e9#6a29584ff407448fb362ea08cd9e0106f85077e9"
 dependencies = [
  "fastrand",
  "getrandom 0.3.4+scarlet.1",
