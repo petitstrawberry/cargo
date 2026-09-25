@@ -4605,14 +4605,13 @@ dependencies = [
 [[package]]
 name = "tempfile"
 version = "3.23.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2d31c77bdf42a745371d260a26ca7163f1e0924b64afa0b688e61b5a9fa02f16"
+source = "git+https://github.com/petitstrawberry/tempfile.git?rev=601a6cb8784d11e12ee90c5a561c5d2bda58da63#601a6cb8784d11e12ee90c5a561c5d2bda58da63"
 dependencies = [
  "fastrand",
  "getrandom 0.3.4+scarlet.1",
  "once_cell",
  "rustix",
- "windows-sys 0.61.2",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
